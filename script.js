@@ -1,7 +1,8 @@
 class Animal {
-  constructor(name, legs) {
+  constructor(name, legs, img) {
     this.name = name;
     this.legs = legs;
+    this.img = img;
   }
 
   action() {
@@ -12,6 +13,12 @@ class Animal {
     var petsTable = document.getElementById("petsTable");
     var petTR = document.createElement("tr");
     petTR.id = "animal-name";
+    petTR.addEventListener("click", function () {
+      var imgNode = document.createElement("img");
+      document.querySelector("#img").innerHTML = "";
+      document.querySelector("#img").appendChild(imgNode).setAttribute("src", this.img);
+
+    }.bind(this))
 
     var petNameTD = document.createElement("td");
     petNameTD.textContent = this.name;
@@ -34,23 +41,23 @@ class Animal {
 }
 
 class Cat extends Animal {
-  constructor(name, legs) {
-    super(name, legs);
+  constructor(name, legs, img) {
+    super(name, legs, img);
     this.actionText = "Meoow"
     this.actionSoundName = "meow"
   }
 }
 
 class Monkey extends Animal {
-  constructor(name, legs) {
-    super(name, legs);
+  constructor(name, legs, img) {
+    super(name, legs, img);
     this.actionText = "Scream"
     this.actionSoundName = "scream"
   }
 }
 
-var Mila = new Cat("Mila", 4);
+var Mila = new Cat("Mila", 4, "https://cdnuploads.aa.com.tr/uploads/Contents/2019/10/24/thumbs_b_c_fb8263ce4f9f43ebdc7634b0d1eb0a08.jpg?v=115427");
 Mila.putInTheDocument();
 
-var Charlie = new Monkey("Charlie", 2);
+var Charlie = new Monkey("Charlie", 2, "https://i.pinimg.com/736x/4d/da/15/4dda15d2e5b91bdbdf5057742d7dfe7e.jpg");
 Charlie.putInTheDocument();
