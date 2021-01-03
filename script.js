@@ -5,8 +5,9 @@ class Animal {
     this.img = img;
   }
 
-  action() {
+  action(e) {
     document.getElementById(this.actionSoundName).play();
+    e.stopPropagation();
   }
 
   putInTheDocument() {
